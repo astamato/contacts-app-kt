@@ -13,6 +13,6 @@ interface ContactsDao {
     suspend fun getAll(): List<Contact>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllContacts(order: List<Contact>)
+    suspend fun insertAllContacts(contacts: List<Contact>)
 
 }

@@ -19,18 +19,10 @@ import javax.inject.Singleton
 @Module(includes = [ContactListModule.Declarations::class])
 class ContactListModule {
 
-    @Provides
-    fun provideRepository(
-        dao: ContactsDao,
-        networkDataSource: ContactsNetworkDataSource
-    ): ContactsRepositoryContract {
-        return ContactsRepositoryProvider(dao, networkDataSource)
-    }
-
     @Singleton
     @Provides
-    fun providesProductDao(aa: AppDatabase): ContactsDao {
-        return aa.contactsDao()
+    fun providesProductDao(appDatabase: AppDatabase): ContactsDao {
+        return appDatabase.contactsDao()
     }
 
     @Module
@@ -43,6 +35,9 @@ class ContactListModule {
         @IntoMap
         @ViewModelKey(ContactListViewModel::class)
         fun provideViewModel(viewModel: ContactListViewModel): ViewModel
+
+        @Binds
+        fun provideRepository(provider: ContactsRepositoryProvider): ContactsRepositoryContract
     }
 }
 
