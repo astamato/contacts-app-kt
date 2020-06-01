@@ -25,7 +25,7 @@ class GetAllContactsUseCase @Inject constructor(
     }
 
     private suspend fun resolveContactsRemote() = withContext(Dispatchers.IO) {
-        val results = repositoryProvider.getContacts().results
+        val results = repositoryProvider.getAll()
         repositoryProvider.save(results)
         results
     }

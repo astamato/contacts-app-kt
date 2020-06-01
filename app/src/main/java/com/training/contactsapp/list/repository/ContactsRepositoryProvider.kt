@@ -11,7 +11,7 @@ class ContactsRepositoryProvider @Inject constructor(
     private val networkDataSource: ContactsNetworkDataSource
 ) : ContactsRepositoryContract {
 
-    override suspend fun getContacts() = networkDataSource.getContacts()
+    override suspend fun getAll() = networkDataSource.getContacts().results
 
     override suspend fun save(contacts: List<Contact>) {
         diskDataSource.save(contacts)

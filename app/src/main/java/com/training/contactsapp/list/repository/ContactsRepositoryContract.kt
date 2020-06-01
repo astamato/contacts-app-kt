@@ -1,11 +1,10 @@
 package com.training.contactsapp.list.repository
 
 import com.training.contactsapp.domain.Contact
-import com.training.contactsapp.domain.ContactsResult
 
 interface ContactsRepositoryContract {
 
-    suspend fun getContacts(): ContactsResult
+    suspend fun getAll(): List<Contact>
 
     suspend fun getAllLocal(): List<Contact>
 
