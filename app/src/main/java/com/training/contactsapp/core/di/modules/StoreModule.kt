@@ -14,8 +14,12 @@ class StoreModule {
     fun provideAppDatabase(app: ContactsApplication): AppDatabase {
         return Room.databaseBuilder(
             app,
-            AppDatabase::class.java, "database-name"
+            AppDatabase::class.java, DATABASE_NAME
         ).build()
+    }
+
+    companion object {
+        const val DATABASE_NAME = "contacts-db"
     }
 
 }
